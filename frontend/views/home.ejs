@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title> <%=title%> </title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Employee Management System</a>
+        </div>
+    </nav>
+    <div class="container">        
+        <h2 class="text-center m-3 p-3">Employee Records </h2>
+
+        <div class="d-flex justify-content-between my-3 py-3">
+            <div>
+                <a href="/addEmployee" class="btn btn-primary">Add Employee</a>
+            </div>
+            <form action="/employees/byid" method="GET" >
+                <label for="id">Employee Id : </label>
+                <input type="number" name="id" id="id"/>
+                <button class="btn btn-primary" type="submit">Search</button>  
+            </form>
+        </div>
+
+        <table class="table table-striped table-hover" >
+            <thead>
+                <tr>
+                    <th style="width: 10%">Employee Id</th>
+                    <th style="width: 20%">First Name</th>
+                    <th style="width: 20%">Last Name</th>
+                    <th style="width: 25%">Email</th>
+                    <th style="width: 25%">Action</th>
+                </tr>
+            </thead>
+            <tbody> 
+                <% if (records.length > 0) {%> 
+                    <% records.forEach(element => { %>
+                    <tr>
+                        <td><%=element.id %></td>
+                        <td><%=element.firstName %></td>
+                        <td><%=element.lastName %></td>
+                        <td><%=element.email %></td>
+                        <td>
+                            <a class="btn btn-primary" href="/employees/delete/<%= element.id %>">update</a>
+                            <a class="btn btn-danger" href="/employees/delete/<%= element.id %>">delete</a>
+                            <a class="btn btn-info" href="/employees/delete/<%= element.id %>">view</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                <% } else {%> 
+                    <tr><td colspan="5"> no data found</td></tr> 
+                <% } %> 
+            </tbody>
+        </table>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</html>
