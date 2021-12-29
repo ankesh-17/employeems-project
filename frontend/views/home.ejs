@@ -24,9 +24,9 @@
                 <form action="/employees/byname" method="GET" >
                     <label for="id">Employee Name : </label>
                     <input type="text" name="firstName" id="firstName"/>
-                    <button class="btn btn-primary" type="submit">Search</button>  
-                </form>
-                <button class="btn btn-primary" type="submit">Search</button> 
+                    <button class="btn btn-primary" type="submit">Search</button> 
+                    <a class="btn btn-primary" href="/">home</a> 
+                </form> 
             </div>
         </div>
 
@@ -51,7 +51,7 @@
                         <td>
                             <a class="btn btn-primary" href="/employees/update/<%= element.id %>">update</a>
                             <a class="btn btn-danger" href="/employees/delete/<%= element.id %>">delete</a>
-                            <a class="btn btn-info" href="/employees/delete/<%= element.id %>">view</a>
+                            <a class="btn btn-info" href="/employees/details/<%= element.id %>">view</a>
                         </td>
                     </tr>
                     <% }) %>

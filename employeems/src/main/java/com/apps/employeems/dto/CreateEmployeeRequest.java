@@ -4,6 +4,7 @@ public class CreateEmployeeRequest {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String salary;
 
 	public String getFirstName() {
 		return firstName;
@@ -28,4 +29,13 @@ public class CreateEmployeeRequest {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getSalary() {
+		return salary;
+	}
+
+	public void setSalary(String salary) {
+		this.salary = salary;
+	}
+	
 }

@@ -5,6 +5,7 @@ public class UpdateEmployeeRequest {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String salary;
 
 	public Integer getId() {
 		return id;
@@ -37,5 +38,14 @@ public class UpdateEmployeeRequest {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getSalary() {
+		return salary;
+	}
+
+	public void setSalary(String salary) {
+		this.salary = salary;
+	}
+	
 
 }

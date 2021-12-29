@@ -1,8 +1,6 @@
 const express= require('express')
 const request=require('request')
 const bodyparser = require('body-parser')
-const { name } = require('ejs')
-// const path=require('path')
 
 const app =  express()
 const port=3000
@@ -16,7 +14,7 @@ app.use(bodyparser.json())
 app.set('view engine','ejs');
 
 const baseURL='http://localhost:8585/employees/';  
-//const baseURL='http://springapp:8585/employees/';  
+//const baseURL='http://springapp:8585/employees/';
 
 app.get('/',(req, res)=>{
     let url=baseURL;
@@ -40,16 +38,25 @@ app.get('/employees/byid', (req, res)=>{
     })
 })
 
+app.get('/employees/details/:id', (req, res)=>{
+    let url=baseURL+'byid/'+req.params.id;
+    request.get(url, (err, response, body)=>{
+        if (err) throw err;
+        let data= JSON.parse(body);
+        res.render('details', {title: 'employee details', record: data});
+    })
+})
+
 app.get('/employees/byname', (req, res)=>{
     let name=req.query.firstName;
     if (name==''){
-        res.render('/');
+        res.redirect('/');
     }else{
         let url=baseURL+'byfirstname/'+ name;
         request.get(url, (err, response,body)=>{
             if (err) throw err;
             let data= JSON.parse(body);
-            res.render('home',{title:'', records: data})
+            res.render('home', {title:'', records: data})
         })
     }
 })
@@ -61,7 +68,8 @@ app.post('/employees/add', (req, res)=>{
         body: {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            email:req.body.email
+            email: req.body.email,
+            salary: req.body.salary
         }
     },(err, res1, body) => {
         if (err) throw err;
@@ -86,7 +94,8 @@ app.post('/employees/update', (req,res)=>{
             id: req.body.id,
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            email:req.body.email
+            email: req.body.email,
+            salary: req.body.salary
         }
     },(err, res1, body) => {
         if (err) throw err;

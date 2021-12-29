@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name = "employees")
 public class Employee {
 
 	@GeneratedValue
@@ -12,16 +13,18 @@ public class Employee {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String salary;
 
 	public Employee() {
 
 	}
 
-	public Employee(String firstName, String lastName, String email) {
+	public Employee(String firstName, String lastName, String email, String salary) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.salary= salary;
 	}
 
 	public Integer getId() {
@@ -54,6 +57,14 @@ public class Employee {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getSalary() {
+		return salary;
+	}
+
+	public void setSalary(String salary) {
+		this.salary = salary;
 	}
 
 	@Override

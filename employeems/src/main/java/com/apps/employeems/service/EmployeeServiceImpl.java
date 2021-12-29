@@ -31,8 +31,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		employee.setFirstName(request.getFirstName());
 		employee.setLastName(request.getLastName());
 		employee.setEmail(request.getEmail());
+		employee.setSalary(request.getSalary());
 		Employee saved = dao.save(employee);
-
 		return util.toDetails(saved);
 	}
 
@@ -67,11 +67,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	@Override
 	public EmployeeDetails updateEmployee(UpdateEmployeeRequest request) {
 		Employee employee = findById(request.getId());
-
 		employee.setFirstName(request.getFirstName());
 		employee.setLastName(request.getLastName());
 		employee.setEmail(request.getEmail());
-
+		employee.setSalary(request.getSalary());
 		Employee updatedEmployee = dao.save(employee);
 		return util.toDetails(updatedEmployee);
 	}

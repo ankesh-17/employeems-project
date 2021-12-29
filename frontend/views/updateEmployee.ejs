@@ -14,13 +14,13 @@
         </div>
     </nav>
     <div class="container">
-        <h2  class="text-center m-3 p-3">Employee Details Form </h2>
+        <h2  class="text-center m-3 p-3">Employee Details </h2>
         <div class="container d-flex justify-content-center">
             <div class="form border border-dark border-3 rounded">
                 <form action="/employees/update" method="POST" class="m-3 p-3">
                     <div class="mb-3">
                         <div class="inputs"><label for="employeeId">Employee Id :</label>
-                            <input type="text" name="id" id="employeeId" value="<%= record.id %>" >
+                            <input type="text" name="id" id="employeeId" value="<%= record.id %>" readonly>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -39,6 +39,13 @@
                             <input type="email" name="email" id="email" value="<%= record.email %>" >
                         </div>
                     </div>
+
+                    <div class="mb-3">
+                        <div class="inputs"><label for="salary">salary :</label>
+                            <input type="text" name="salary" id="salary" value="<%= record.salary %>" >
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">update</button>
                 </form>
             </div>
