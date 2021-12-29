@@ -1,6 +1,7 @@
 const express= require('express')
 const request=require('request')
 const bodyparser = require('body-parser')
+const { name } = require('ejs')
 // const path=require('path')
 
 const app =  express()
@@ -14,7 +15,8 @@ app.use(bodyparser.json())
 // app.set("views", path.join(__dirname + "/views"))
 app.set('view engine','ejs');
 
-const baseURL='http://springapp:8585/employees/';
+const baseURL='http://localhost:8585/employees/';  
+//const baseURL='http://springapp:8585/employees/';  
 
 app.get('/',(req, res)=>{
     let url=baseURL;
@@ -30,12 +32,26 @@ app.get('/addEmployee', (req, res)=>{
 })
 
 app.get('/employees/byid', (req, res)=>{
-    let id=req.query.id
+    let id=req.query.id;
     let url=baseURL+'byid/'+id;
     request.get(url, (err, response,body)=>{
         if (err) throw err;
         res.send(body);
     })
+})
+
+app.get('/employees/byname', (req, res)=>{
+    let name=req.query.firstName;
+    if (name==''){
+        res.render('/');
+    }else{
+        let url=baseURL+'byfirstname/'+ name;
+        request.get(url, (err, response,body)=>{
+            if (err) throw err;
+            let data= JSON.parse(body);
+            res.render('home',{title:'', records: data})
+        })
+    }
 })
 
 app.post('/employees/add', (req, res)=>{
@@ -53,8 +69,16 @@ app.post('/employees/add', (req, res)=>{
     });
 })
 
-/*
-app.put('/employee/update/', (req,res)=>{
+app.get('/employees/update/:id', (req, res)=>{
+    let url=baseURL+'byid/'+ req.params.id;
+    request.get(url, (err, response, body)=>{
+        if (err) throw err;
+        let data =JSON.parse(body);
+        res.render('updateEmployee', { title : 'updatedata', record: data})
+    })
+})
+
+app.post('/employees/update', (req,res)=>{
     request.put({
         url: baseURL+'update/',
         json: true,
@@ -66,10 +90,10 @@ app.put('/employee/update/', (req,res)=>{
         }
     },(err, res1, body) => {
         if (err) throw err;
-        res.send(body)
+        res.redirect('/');
     });
 })
-*/
+
 
 app.get('/employees/delete/:id', (req,res)=>{
     let id=req.params.id

@@ -17,24 +17,29 @@
         <h2  class="text-center m-3 p-3">Employee Details Form </h2>
         <div class="container d-flex justify-content-center">
             <div class="form border border-dark border-3 rounded">
-                <form action="/employees/add" method="POST" class="m-3 p-3">
+                <form action="/employees/update" method="POST" class="m-3 p-3">
+                    <div class="mb-3">
+                        <div class="inputs"><label for="employeeId">Employee Id :</label>
+                            <input type="text" name="id" id="employeeId" value="<%= record.id %>" >
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <div class="inputs"><label for="firstName">First Name :</label>
-                            <input type="text" name="firstName" id="firstName" placeholder="Alex" />
+                            <input type="text" name="firstName" id="firstName" value="<%= record.firstName %>" >
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="inputs"><label for="lastName">Last Name :</label>
-                            <input type="text" name="lastName" id="lastName" placeholder="" />
+                            <input type="text" name="lastName" id="lastName" value="<%= record.lastName %>" >
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <div class="inputs"><label for="email">Email :</label>
-                            <input type="email" name="email" id="email" placeholder="alex@mail.com" />
+                            <input type="email" name="email" id="email" value="<%= record.email %>" >
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">update</button>
                 </form>
             </div>
         </div>
