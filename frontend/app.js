@@ -11,8 +11,8 @@ app.use(bodyparser.json())
 
 app.set('view engine','ejs');
 
-const baseURL='http://localhost:8585/employees/';   
-//const baseURL='http://springapp:8585/employees/';
+//const baseURL='http://localhost:8585/employees/';   
+const baseURL='http://springapp:8585/employees/';
 
 
 //making get request on / and returning home page with all employees records
