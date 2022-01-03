@@ -11,8 +11,8 @@ app.use(bodyparser.json())
 
 app.set('view engine','ejs');
 
-const baseURL='http://localhost:8585/employees/';   
-//const baseURL='http://springapp:8585/employees/';
+//const baseURL='http://localhost:8585/employees/';   
+const baseURL='http://springapp:8585/employees/';
 
 app.get('/',(req, res)=>{
     let url=baseURL;
