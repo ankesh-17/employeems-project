@@ -5,15 +5,13 @@ const bodyparser = require('body-parser')
 const app =  express()
 const port=3000
 
-// app.use(express.json());
 // Body-parser middleware
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(bodyparser.json())
 
-// app.set("views", path.join(__dirname + "/views"))
 app.set('view engine','ejs');
 
-const baseURL='http://localhost:8585/employees/';  
+const baseURL='http://localhost:8585/employees/';   
 //const baseURL='http://springapp:8585/employees/';
 
 app.get('/',(req, res)=>{
