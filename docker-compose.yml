@@ -1,13 +1,13 @@
 version: '3'
 services:
-  nodeapp:
-    build: ./frontend
-    container_name: nodeapp
-    image: ankesh-17/nodeapp
-    ports: 
-    - 3000:3000
-    depends_on:
-    - springapp
+  db:
+    image: postgres
+    container_name: db
+    environment:
+    - POSTGRES_PASSWORD=1234
+    - POSTGRES_DB=empms
+    volumes:
+    - /tmp/data:/var/lib/postgresql/data
 
   springapp:
     build: ./employeems
@@ -17,11 +17,11 @@ services:
     depends_on:
     - db
 
-  db:
-    image: postgres
-    container_name: db
-    environment:
-    - POSTGRES_PASSWORD=1234
-    - POSTGRES_DB=empms
-    volumes:
-    - /tmp/data:/var/lib/postgresql/data
+  nodeapp:
+    build: ./frontend
+    container_name: nodeapp
+    image: ankesh-17/nodeapp
+    ports: 
+    - 3000:3000
+    depends_on:
+    - springapp
