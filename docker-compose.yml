@@ -12,6 +12,7 @@ services:
   springapp:
     build: ./employeems
     container_name: springapp
+    image: ankesh-17/springapp
     ports:
     - 8585:8585
     depends_on:

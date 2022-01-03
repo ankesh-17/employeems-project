@@ -12,6 +12,9 @@ import com.apps.employeems.entities.Employee;
 @Component
 public class EmployeeUtil {
 
+	/*
+	 * method for converting a employee object to a dto object
+	 */
 	public EmployeeDetails toDetails(Employee employee) {
 		EmployeeDetails details = new EmployeeDetails();
 		details.setId(employee.getId());
@@ -22,6 +25,9 @@ public class EmployeeUtil {
 		return details;
 	}
 
+	/*
+	 * method for converting list of employee objects to dto objects
+	 */
 	public List<EmployeeDetails> toDetailsList(Collection<Employee> employees) {
 
 		List<EmployeeDetails> desired = new ArrayList<>();

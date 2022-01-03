@@ -21,5 +21,5 @@ public interface IEmployeeService {
 	
 	EmployeeDetails updateEmployee(UpdateEmployeeRequest request);
 
-	void deleteById(int id);
+	String deleteById(int id);
 }

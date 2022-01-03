@@ -14,6 +14,8 @@ app.set('view engine','ejs');
 //const baseURL='http://localhost:8585/employees/';   
 const baseURL='http://springapp:8585/employees/';
 
+
+//making get request on / and returning home page with all employees records
 app.get('/',(req, res)=>{
     let url=baseURL;
     request.get(url, (err, response, body)=>{
@@ -23,19 +25,12 @@ app.get('/',(req, res)=>{
     })
 })
 
+// get request on /addemployee returns a form to add employees
 app.get('/addEmployee', (req, res)=>{
     res.render('addEmployee', {title : 'Add employee'});
 })
 
-app.get('/employees/byid', (req, res)=>{
-    let id=req.query.id;
-    let url=baseURL+'byid/'+id;
-    request.get(url, (err, response,body)=>{
-        if (err) throw err;
-        res.send(body);
-    })
-})
-
+//for geting employees details by id
 app.get('/employees/details/:id', (req, res)=>{
     let url=baseURL+'byid/'+req.params.id;
     request.get(url, (err, response, body)=>{
@@ -45,6 +40,7 @@ app.get('/employees/details/:id', (req, res)=>{
     })
 })
 
+// for getting employees by name
 app.get('/employees/byname', (req, res)=>{
     let name=req.query.firstName;
     if (name==''){
@@ -59,6 +55,7 @@ app.get('/employees/byname', (req, res)=>{
     }
 })
 
+//for adding employee to database
 app.post('/employees/add', (req, res)=>{
     request.post( {
         url: baseURL+'add/',
@@ -75,6 +72,7 @@ app.post('/employees/add', (req, res)=>{
     });
 })
 
+// for getting the update page
 app.get('/employees/update/:id', (req, res)=>{
     let url=baseURL+'byid/'+ req.params.id;
     request.get(url, (err, response, body)=>{
@@ -84,6 +82,7 @@ app.get('/employees/update/:id', (req, res)=>{
     })
 })
 
+// for updating the employee details
 app.post('/employees/update', (req,res)=>{
     request.put({
         url: baseURL+'update/',
@@ -101,7 +100,7 @@ app.post('/employees/update', (req,res)=>{
     });
 })
 
-
+//for deleting the employee by id
 app.get('/employees/delete/:id', (req,res)=>{
     let id=req.params.id
     let url=baseURL+'delete/'+id;
@@ -111,6 +110,7 @@ app.get('/employees/delete/:id', (req,res)=>{
     })
 })
 
+//running the server on port 3000
 app.listen(port, ()=>{
     console.log(`app listening at http://localhost:${port}`)
 })
