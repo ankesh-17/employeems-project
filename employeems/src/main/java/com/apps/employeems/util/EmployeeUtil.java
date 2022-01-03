@@ -22,6 +22,7 @@ public class EmployeeUtil {
 		details.setLastName(employee.getLastName());
 		details.setEmail(employee.getEmail());
 		details.setSalary(employee.getSalary());
+		details.setDepartment(employee.getDepartment());
 		return details;
 	}
 

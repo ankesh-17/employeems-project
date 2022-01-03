@@ -11,8 +11,8 @@ app.use(bodyparser.json())
 
 app.set('view engine','ejs');
 
-//const baseURL='http://localhost:8585/employees/';   
-const baseURL='http://springapp:8585/employees/';
+const baseURL='http://localhost:8585/employees/';   
+//const baseURL='http://springapp:8585/employees/';
 
 
 //making get request on / and returning home page with all employees records
@@ -64,7 +64,8 @@ app.post('/employees/add', (req, res)=>{
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
-            salary: req.body.salary
+            salary: req.body.salary,
+            department: req.body.department
         }
     },(err, res1, body) => {
         if (err) throw err;
@@ -92,7 +93,8 @@ app.post('/employees/update', (req,res)=>{
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
-            salary: req.body.salary
+            salary: req.body.salary,
+            department: req.body.department
         }
     },(err, res1, body) => {
         if (err) throw err;

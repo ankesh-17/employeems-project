@@ -6,6 +6,7 @@ public class EmployeeDetails {
 	private String lastName;
 	private String email;
 	private String salary;
+	private String department;
 
 	public Integer getId() {
 		return id;
@@ -46,5 +47,12 @@ public class EmployeeDetails {
 	public void setSalary(String salary) {
 		this.salary = salary;
 	}
-	
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
 }

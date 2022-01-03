@@ -34,6 +34,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		employee.setLastName(request.getLastName());
 		employee.setEmail(request.getEmail());
 		employee.setSalary(request.getSalary());
+		employee.setDepartment(request.getDepartment());
 		Employee saved = dao.save(employee);
 		return util.toDetails(saved);
 	}
@@ -87,6 +88,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		employee.setLastName(request.getLastName());
 		employee.setEmail(request.getEmail());
 		employee.setSalary(request.getSalary());
+		employee.setDepartment(request.getDepartment());
 		Employee updatedEmployee = dao.save(employee);
 		return util.toDetails(updatedEmployee);
 	}

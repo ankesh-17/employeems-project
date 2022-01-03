@@ -14,17 +14,18 @@ public class Employee {
 	private String lastName;
 	private String email;
 	private String salary;
+	private String department;
 
 	public Employee() {
 
 	}
-
-	public Employee(String firstName, String lastName, String email, String salary) {
-		super();
+	
+	public Employee(String firstName, String lastName, String email, String salary, String department) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.salary= salary;
+		this.salary = salary;
+		this.department = department;
 	}
 
 	public Integer getId() {
@@ -65,6 +66,14 @@ public class Employee {
 
 	public void setSalary(String salary) {
 		this.salary = salary;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 
 	@Override
